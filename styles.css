@@ -1,0 +1,595 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: #c7c7c7;
+}
+
+.buttons {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.button {
+    margin: 20px;
+    background: none;
+    outline: none;
+    border: 3px solid #fff;
+    font-size: 40px;
+    color:  #000;
+    padding: 8px 10px;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden; /* PARA QUE NO SE VEA EL BEFORE CUANDO SALE DE LA CAJA */
+}
+
+/* DE ACÁ PARA ABAJO EMPIEZAN LOS BOTONES ANIMADOS */
+
+/* BOTÓN 1 */
+
+    .btn1 {
+        transition: color 0.4s;
+    }
+
+    .btn1:hover {
+        color: #fff; /* MISMO COLOR QUE EL FONDO */
+    }
+
+    .btn1:before {
+        content: "";
+        position: absolute;
+        display: block; /* PARA PODER DARLE MEDIDAS A LA CAJA DEL DEL BEFORE */
+        width: 100%;
+        height: 100%;
+        top: 0; /* PARA QUE EL BEFORE SE COLOQUE A LA IZQUIERDA DEL BOTÓN */
+        left: 0; /* PARA QUE EL BEFORE SE COLOQUE A LA IZQUIERDA DEL BOTÓN */
+        background: #000;
+        z-index: -1; /* PARA QUE EL BACKGROUND DE ESTE BEFORE NO TAPE EL CONTENIDO DEL BOTÓN. AL SER ESTE, UN HIJO DEL BOTÓN, SE COLOCA ENCIMA. */
+        transform: translateX(-100%); /* SI MODIFICAMOS EL VALOR DEL (), EL RELLENO VENDRÁ DE OTRO LADO. SI QUEREMOS QUE VENGA DE ARRIBA O DE ABAJO, DEBEMOS USAR TRANSLATEY(); */
+        transition: transform 0.4s;
+    }
+
+    .btn1:hover:before {
+        transform: translateX(0); /* CUANDO ESTÉ EN HOVER EL BOTÓN, VOLVERÁ TODO A LA NORMALIDAD, MIENTRAS TANTO, SE OCULTA EL BEFORE */
+    }
+
+/* BOTÓN 2 */
+
+    .btn2 {
+        transition: color 0.4s;
+    }
+
+    .btn2:hover {
+        color: #fff; /* MISMO COLOR QUE EL FONDO */
+    }
+
+    .btn2:before,
+    .btn2:after { /* COMPARTEN CARACTERÍSTICAS IGUALES */
+        content:"";
+        position: absolute;
+        display: block;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background: #000;
+        z-index: -1;
+        transition: transform .6s; /* EL LINEAR ES PARA QUE LA TRANSICIÓN NO SEA TAN BRUSCA */
+    }
+
+    .btn2:before { /* SOLO QUIERO AFECTAR AL BEFORE */
+        transform: rotateY(90deg);
+    }
+
+    .btn2:after {
+        transform: rotateX(90deg);
+    }
+
+    .btn2:hover:before,
+    .btn2:hover:after {
+        transform: rotate(0deg);
+    }
+
+/* BOTÓN 3 */
+
+    .btn3 {
+        transition: color .4s;
+    }
+
+    .btn3:hover {
+        color: #fff;
+    }
+
+    .btn3:before,
+    .btn3:after {
+        content:"";
+        position: absolute;
+        display: block;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background: transparent; /* PARA QUE NO SE VEA EL BACKGROUND */
+        z-index: -1;
+    }
+
+    .btn3:hover:before {
+        background: #000;
+    }
+
+    .btn3:after {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 30%;
+        top: 50%; /* SOBREESCRIBIMOS EL AFTER DE ARRIBA */
+        background: #fff;
+        transform: rotate(45deg) translateY(550%); /* DEBEMOS DESCOMENTAR EL OVERFLOW HIDDEN DE ".BUTTON" PARA VER LA LÍNEA, Y ESTA DEBE QUEDAR POR FUERA DE LA CAJA */
+        transition: background .4s;
+    }
+
+    .btn3:hover:after {
+        transform: rotate(45deg) translateY(-550%); /* DEBE SER LO MISMO QUE EL TRANSFORM DE ARRIBA, PERO EL TRANSLATEY DEBE SER NEGATIVO PARA QUE LA SOMBRA SE MUEVA AL OTRO LADO */
+        transition: background .4s, transform .6s;
+    }
+
+/* BOTÓN 4 */
+
+    .btn4:after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 3px;
+        top: 0;
+        left: 0;
+        background: #000;
+        transition: width .5s;
+    }
+
+    .btn4:hover:after {
+        width: 100%;
+    }
+
+/* BOTÓN 5 */
+
+    .btn5:after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 3px;
+        bottom: 0;
+        right: 0;
+        background: #000;
+        transition: width .5s;
+    }
+
+    .btn5:hover:after {
+        width: 100%;
+    }
+
+/* BOTÓN 6 */
+
+    .btn6:after,
+    .btn6:before {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 3px;
+        bottom: 0;
+        right: 0;
+        background: #000;
+        transition: width .5s;
+    }
+
+    .btn6:before {
+        top: 0;
+        left: 0;
+    }
+
+    .btn6:hover:after,
+    .btn6:hover:before {
+        width: 100%;
+    }
+
+/* BOTÓN 7 */
+
+    .btn7:before {
+        content: "";
+        display: block;
+        position: absolute;
+        width: 0;
+        height: 3px;
+        left: 50%;
+        bottom: 0;
+        background: #000;
+        transition: width .5s, left .5s;
+    }
+
+    .btn7:hover:before {
+        left: 0;
+        width: 100%;
+    }
+
+/* BOTÓN 8 */
+
+    .btn8 {
+        background: transparent;
+        border: 3px solid transparent;
+        border-radius: 4px;
+        transition: all .3s;
+        position: relative;
+        overflow: auto; /* NO HACE FALTA PONERLO, LO PONGO PORQUE LA CLASS BUTTON TIENE OVERFLOW HIDDEN. */
+    }
+
+    .btn8:after {
+        content: "";
+        display: block;
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        border-top: 3px solid #fff;
+        border-left: 3px solid #fff;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        transition: all .2s;
+    }
+
+    .btn8:before {
+        content: "";
+        display: block;
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        border-bottom: 3px solid #fff;
+        border-right: 3px solid #fff;
+        top: -1;
+        right: 0;
+        bottom: 0;
+        left: -1;
+        transition: all .2s;
+    }
+
+    .btn8:hover:after,
+    .btn8:hover:before {
+        width: 180px;
+        height: 80px;
+    }
+
+/* BOTÓN 9 */
+
+    .btn9 {
+        background: #000;
+        color: #fff;
+        border: 3px solid transparent;
+        border-radius: 4px;
+        transition: all .3s;
+        position: relative;
+        overflow: auto; /* NO HACE FALTA PONERLO, LO PONGO PORQUE LA CLASS BUTTON TIENE OVERFLOW HIDDEN. */
+    }
+
+    .btn9:after {
+        content: "";
+        display: block;
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        border-top: 3px solid #fff;
+        border-left: 3px solid #fff;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        transition: all .2s;
+    }
+
+    .btn9:before {
+        content: "";
+        display: block;
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        border-bottom: 3px solid #fff;
+        border-right: 3px solid #fff;
+        top: -1;
+        right: 0;
+        bottom: 0;
+        left: -1;
+        transition: all .2s;
+    }
+
+    .btn9:hover:after,
+    .btn9:hover:before {
+        width: 180px;
+        height: 80px;
+    }
+
+/* BOTÓN 10 */
+
+    .btn10:after {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 3px;
+        height: 0;
+        background: #000;
+        transition: height .5s;
+    }
+
+    .btn10:hover:after {
+        height: 100%;
+    }
+
+/* BOTÓN 11 */
+
+    .btn11:after {
+        content: "";
+        display: block;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 3px;
+        height: 0;
+        background: #000;
+        transition: height .5s;
+    }
+
+    .btn11:hover:after {
+        height: 100%;
+    }
+
+/* BOTÓN 12 */
+
+    .btn12:after,
+    .btn12:before {
+        content: "";
+        display: block;
+        position: absolute;
+        width: 3px;
+        height: 0;
+        background: #000;
+        transition: height .5s;
+    }
+
+    .btn12:after {
+        bottom: 0;
+        right: 0;
+    }
+
+    .btn12:before {
+        top: 0;
+        left: 0;
+    }
+
+    .btn12:hover:after,
+    .btn12:hover:before {
+        height: 100%;
+    }
+
+/* BOTÓN 13 */
+
+    .btn13:after,
+    .btn13:before {
+        content: "";
+        display: block;
+        position: absolute;
+        width: 3px;
+        height: 0;
+        background: #000;
+        transition: height .5s;
+    }
+
+    .btn13:after {
+        bottom: 0;
+        right: 0;
+    }
+
+    .btn13:before {
+        bottom: 0;
+        left: 0;
+    }
+
+    .btn13:hover:after,
+    .btn13:hover:before {
+        height: 100%;
+    }
+
+/* BOTÓN 14 */
+
+    .btn14:after,
+    .btn14:before {
+        content: "";
+        display: block;
+        position: absolute;
+        width: 3px;
+        height: 0;
+        background: #000;
+        transition: height .5s, bottom .5s;
+    }
+
+    .btn14:after {
+        bottom: 50%;
+        right: 0;
+    }
+
+    .btn14:before {
+        bottom: 50%;
+        left: 0;
+    }
+
+    .btn14:hover:after,
+    .btn14:hover:before {
+        height: 100%;
+        bottom: 0;
+    }
+
+/* BOTÓN 15 */
+
+    .btn15 {
+        width: 200px;
+        height: 200px;
+    } 
+
+    .btn15:after,
+    .btn15:before {
+        content:"";
+        display: block;
+        position: absolute;
+        background: #000;
+        transition: all 1s;
+    }
+
+    .btn15:after {
+        width: 0;
+        height: 3px;
+        bottom: 0;
+        left: 50%;
+        box-shadow: 0 -191px #000;
+    }
+
+    .btn15:before {
+        width: 3px;
+        height: 0;
+        top: 50%;
+        left: 0;
+        box-shadow: 191px 0 #000;
+    }
+
+    .btn15:hover:after {
+        width: 100%;
+        left: 0;
+    }
+
+    .btn15:hover:before {
+        height: 100%;
+        top: 0;
+    }
+
+/* BOTÓN 16 */
+
+    .btn16 {
+        width: 200px;
+        height: 200px;
+        overflow: hidden; /* PARA QUE EL NO SE VEA LA LÍNEA DEL BOX SHADOW DEL BEFORE */
+    }
+
+    .btn16:after,
+    .btn16:before {
+        content:"";
+        display: block;
+        position: absolute;
+        left: 0;
+        background: #000;
+        transition: all 1s;
+    }
+
+    .btn16:before { /* LÍNEA HORIZONTAL INFERIOR */
+        bottom: 0;
+        width: 0;
+        height: 3px;
+        box-shadow: 200px -191px #000; /* LÍNEA HORIZONTAL SUPERIOR. BOX-SHADOW ME CREA UNA COPIA EXACTA DE LA LÍNEA QUE CREE CON ESTE BEFORE. DEBEMOS CALCULAR SEGÚN EL HEIGHT DE LA CAJA, CUÁNTO DEBERÁ MOVERSE SOBRE EL EJE Y ESTE BOX SHADOW. EN ESTE CASO SON -191PX. EL PRIMER VALOR (200PX) ES PARA SACAR A LA LÍNEA FUERA DE LA CAJA, PARA QUE PUEDA HACER LA TRANSICIÓN CORRECTAMENTE. */
+    }
+
+    .btn16:after { /* LÍNEA VERTICAL IZQUIERDA */
+        top: 0;
+        width: 3px;
+        height: 0;
+        box-shadow: 191px 200px #000; /* LÍNEA VERTICAL DERECHA. EL SEGUNDP VALOR (200PX) ES PARA SACAR A LA LÍNEA FUERA DE LA CAJA, PARA QUE PUEDA HACER LA TRANSICIÓN CORRECTAMENTE */
+    }
+
+    .btn16:hover:after {
+        height: 100%;
+        box-shadow: 191px 0 #000;
+    }
+
+    .btn16:hover:before {
+        width: 100%;
+        box-shadow: 0 -191px #000;
+    }
+
+/* BOTÓN 17 */
+
+    .btn17 {
+        color:#000;
+        border: none;
+        overflow: auto; /* NO HACE FALTA PONERLO, LO PONGO PORQUE LA CLASS BUTTON TIENE OVERFLOW HIDDEN. */
+    }
+
+    .btn17:after,
+    .btn17:before {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color:#000;
+        transition: all .3s ease;
+        transform: scale(0.85);
+    }
+
+    .btn17:hover:before {
+        top: 0;
+        transform: scale(1);
+    }
+
+    .btn17:hover:after {
+        transform: scale(1);
+    }
+
+/* BOTÓN 18 */
+
+    .btn18 {
+        color:#000;
+        border: none;
+        overflow: auto; /* NO HACE FALTA PONERLO, LO PONGO PORQUE LA CLASS BUTTON TIENE OVERFLOW HIDDEN. */
+    }
+
+    .btn18:after,
+    .btn18:before {
+        content: "";
+        display: block;
+        position: absolute;
+        width: 20%;
+        height: 20%;
+        border: 2px solid;
+        transition: all .6s ease;
+        border-radius: 2px;
+    }
+
+    .btn18:after {
+        bottom: 0;
+        right: 0;
+        border-color: transparent #000 #000 transparent;
+    }
+
+    .btn18:before {
+        top: 0;
+        left: 0;
+        border-color:#000 transparent transparent #000;
+    }
+
+    .btn18:hover:after,
+    .btn18:hover:before {
+        border-color:#000;
+        width: 100%;
+        height: 100%;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
